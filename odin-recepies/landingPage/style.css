@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: <weight>; */
+    /* font-style: normal; */
 }
 .header-container{
     /* border: 1px solid black; */
@@ -59,7 +64,7 @@ button{
 
 }
 .quotes-container{
-    background-color: rgb(252, 209, 216);
+    background-color: #e5e7eb;
     height: 30vh;
     display: flex;
     align-items: center;
