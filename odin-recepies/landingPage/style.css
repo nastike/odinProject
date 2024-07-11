@@ -72,7 +72,11 @@ button{
     flex-direction: column;
 
 }
-
+.call-to-act{
+    display: flex;
+    justify-content: center;
+    
+}
 .call-to-action-wraper{
     display: flex;
     justify-content: space-evenly;
@@ -80,6 +84,8 @@ button{
     height: 20vh;
     color: #f9faf8;
     align-items: center;
+    width: 70vw;
+    
     
 }
 
@@ -95,4 +101,11 @@ button{
 .signup{
     display: flex;
     justify-content: flex-end;
+}
+
+img{
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    height: 200px;
 }
