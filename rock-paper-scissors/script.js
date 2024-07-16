@@ -91,12 +91,6 @@ else
 {
     console.log("No clear winner for today")
 }
-// console.log(`Cpu Wins: ${cpuWins} Player Wins: ${userWin} and Draw: ${draw} times`)
-// Enter how many times do you want to play the game and run the loop that many times 
-// playGame()
-
-
-// keep count of the number of wins for computer and number of wins for the user
 
 let computerWinCounter = 0;
 let playerWinCounter = 0;
