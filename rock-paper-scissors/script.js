@@ -6,26 +6,28 @@ let userWin = 0;
 let cpuWins = 0;
 let draw = 0;
 
+ //  prompt to ask the user how many rounds they want to play the game
+
 const numberOfTimesYouWantToPlay = ()=>{
     return parseInt(prompt("How Many Times do you want to play the game "))
 }
 
-// Make Computer Choice
+// Function to make selection of Rock Paper and Scissors for Computer using random number generator
 const computerSelection = ()=>{
     return Math.floor(Math.random()*3)
 }
 
-// Make User Choice
+// Function to make a selection of Rock Paper or Scissors
 const userSelection = ()=>{
     const choice = parseInt(prompt("Enter 0 for Rock, 1 for Paper and 2 for Scissors "))
     return choice
     if(choice> 2 && choice < 0){
-
+        // Edge case need to do it later, can't think of it right now
     }
 }
 
 
-// Calculate Winner
+// Calculating the winner to display it in the end
 const calculateWinner = (choiceCPU, choiceUser)=>{
     // console.log(choiceCPU, choiceUser)
     if (choiceCPU === choiceUser) {
@@ -62,7 +64,7 @@ const calculateWinner = (choiceCPU, choiceUser)=>{
     }
     else 
     return "Invalid Choice"
-    // Rock == Rock, Paper == Paper, Scissors == Scissors === DRAW
+   
     
 }
 
@@ -70,6 +72,7 @@ const calculateWinner = (choiceCPU, choiceUser)=>{
 
 const playGame = ()=>{
     let winner;
+   
     const numberOfTime = numberOfTimesYouWantToPlay();
     for (let i = 0; i < numberOfTime; i++) {
         const choiceUser = userSelection();
@@ -79,6 +82,8 @@ const playGame = ()=>{
     }
    
 }
+
+// Execution and displaying the winner
 playGame();
 if(cpuWins>userWin) {
     console.log(`Aggregate Winner is cpu with ${cpuWins}`)
@@ -92,5 +97,3 @@ else
     console.log("No clear winner for today")
 }
 
-let computerWinCounter = 0;
-let playerWinCounter = 0;
