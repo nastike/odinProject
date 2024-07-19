@@ -5,95 +5,103 @@
 let userWin = 0;
 let cpuWins = 0;
 let draw = 0;
-
- //  prompt to ask the user how many rounds they want to play the game
-
-const numberOfTimesYouWantToPlay = ()=>{
-    return parseInt(prompt("How Many Times do you want to play the game "))
+let result
+const computerChoices = ["rock", "paper", "scissor"]
+const computerChoiceDisplay = document.querySelector("#computer-choice")
+const userChoiceDisplay = document.querySelector("#user-choice")
+let resultDisplay = document.querySelector("#results")
+const buttons = document.querySelectorAll(".choices")
+let userChoice;
+let computerChoice;
+const scoreDisplayUser = document.querySelector("#playerScore")
+const scoreDisplayComputer = document.querySelector("#computerScore")
+const resetButton = document.querySelector("#reset")
+const calculateWinner = (choiceCPU, choiceUser)=>{
+    // console.log(choiceCPU, choiceUser)
+    
+   
+        if (choiceCPU === choiceUser) {
+            draw++
+            result = "draw"
+             
+        }
+        // Rock vs Paper = Paper Wins
+        if( choiceCPU == 'rock' && choiceUser == 'paper'){
+            userWin++
+            result = "User Wins"
+             
+        }
+        if (choiceCPU === "paper" && choiceUser === "rock"){
+            cpuWins++
+            result = "Cpu wins"
+             
+        }
+    
+        // Rock vs Scissors == Rock Wins
+        if( choiceCPU == "scissor" && choiceUser == "rock"){
+            userWin++
+            result = "user wins"
+             
+        }
+        if (choiceCPU === "rock" && choiceUser === "scissor"){
+            cpuWins++
+            result = "Cpu wins"
+            
+        }
+        // Paper vs Scissors = Scissors win
+        if( choiceCPU == "paper" && choiceUser == "scissor"){
+            userWin++
+            result = "user wins"
+             
+        }
+        if (choiceCPU === "scissor" && choiceUser === "paper"){
+            cpuWins++
+            result = "Cpu wins"
+             
+        }
+        resultDisplay.innerHTML = result
+        scoreDisplayComputer.textContent = cpuWins;
+        scoreDisplayUser.textContent = userWin;
+    
+    
+   
 }
 
+
+resetButton.addEventListener("click", ()=>{
+    userWin = 0;
+    cpuWins = 0;
+    scoreDisplayComputer.textContent = cpuWins;
+    scoreDisplayUser.textContent = userWin;
+    result = '';
+    userChoice = '';
+    computerChoice = '';
+    userChoiceDisplay.innerHTML = userChoice;
+    computerChoiceDisplay.innerHTML = computerChoice;
+    resultDisplay.innerHTML = result;
+
+})
+
+buttons.forEach(possibleChoice => possibleChoice.addEventListener('click', (e)=>{
+    userChoice = e.target.id;
+    userChoiceDisplay.innerHTML = userChoice;
+    computerChoice = computerChoices[Math.floor(Math.random()*3)];
+    computerChoiceDisplay.innerHTML = computerChoice;
+
+    const result = calculateWinner(computerChoice, userChoice);
+   
+    console.log(userWin, cpuWins)
+
+}))
 // Function to make selection of Rock Paper and Scissors for Computer using random number generator
-const computerSelection = ()=>{
-    return Math.floor(Math.random()*3)
-}
 
-// Function to make a selection of Rock Paper or Scissors
-const userSelection = ()=>{
-    const choice = parseInt(prompt("Enter 0 for Rock, 1 for Paper and 2 for Scissors "))
-    return choice
-    if(choice> 2 && choice < 0){
-        // Edge case need to do it later, can't think of it right now
-    }
-}
+
+
 
 
 // Calculating the winner to display it in the end
-const calculateWinner = (choiceCPU, choiceUser)=>{
-    // console.log(choiceCPU, choiceUser)
-    if (choiceCPU === choiceUser) {
-        draw++
-        return `gameIsDraw ${draw} times`
-    }
-    // Rock vs Paper = Paper Wins
-    else if( choiceCPU == 0 && choiceUser == 1){
-        userWin++
-        return `user wins ${userWin} times`
-    }
-    else if (choiceCPU === 1 && choiceUser === 0){
-        cpuWins++
-        return `Cpu wins ${cpuWins} times`
-    }
 
-    // Rock vs Scissors == Rock Wins
-    else if( choiceCPU == 2 && choiceUser == 0){
-        userWin++
-        return `user wins ${userWin} times`
-    }
-    else if (choiceCPU === 0 && choiceUser === 2){
-        cpuWins++
-       return `Cpu wins ${cpuWins} times`
-    }
-    // Paper vs Scissors = Scissors win
-    else if( choiceCPU == 1 && choiceUser == 2){
-        userWin++
-        return `user wins ${userWin} times`
-    }
-    else if (choiceCPU === 2 && choiceUser === 1){
-        cpuWins++
-        return `Cpu wins ${cpuWins} times`
-    }
-    else 
-    return "Invalid Choice"
-   
-    
-}
 
-// Play game
 
-const playGame = ()=>{
-    let winner;
-   
-    const numberOfTime = numberOfTimesYouWantToPlay();
-    for (let i = 0; i < numberOfTime; i++) {
-        const choiceUser = userSelection();
-        const choiceCPU = computerSelection();
-        winner = calculateWinner(choiceUser, choiceCPU);
-        console.log(winner)
-    }
-   
-}
 
-// Execution and displaying the winner
-playGame();
-if(cpuWins>userWin) {
-    console.log(`Aggregate Winner is cpu with ${cpuWins}`)
-
-}
-else if(userWin>cpuWins){
-    console.log(`Aggregate Winner is User with ${userWin}`)
-}
-else
-{
-    console.log("No clear winner for today")
-}
 
