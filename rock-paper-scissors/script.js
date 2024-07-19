@@ -87,8 +87,21 @@ buttons.forEach(possibleChoice => possibleChoice.addEventListener('click', (e)=>
     userChoiceDisplay.innerHTML = userChoice;
     computerChoice = computerChoices[Math.floor(Math.random()*3)];
     computerChoiceDisplay.innerHTML = computerChoice;
-
-    const result = calculateWinner(computerChoice, userChoice);
+    if(cpuWins <5 && userWin<5){
+        calculateWinner(computerChoice, userChoice);
+        console.log("From IF")
+    }else{
+        if(cpuWins>userWin){
+            result = `Game over, the winner is CPU`
+            resultDisplay.textContent = result;
+            console.log("From Else")
+        }else{
+            result = `Game over, the winner is User`;
+            resultDisplay.textContent = result;
+        }
+        
+    }
+    
    
     console.log(userWin, cpuWins)
 
