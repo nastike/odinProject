@@ -1,120 +1,84 @@
-// 0 = ROCK
-// 1 = PAPER
-// 2 = SCISSORS
-
-let userWin = 0;
-let cpuWins = 0;
-let draw = 0;
-let result
-const computerChoices = ["rock", "paper", "scissor"]
-const computerChoiceDisplay = document.querySelector("#computer-choice")
-const userChoiceDisplay = document.querySelector("#user-choice")
-let resultDisplay = document.querySelector("#results")
-const buttons = document.querySelectorAll(".choices")
-let userChoice;
-let computerChoice;
-const scoreDisplayUser = document.querySelector("#playerScore")
-const scoreDisplayComputer = document.querySelector("#computerScore")
-const resetButton = document.querySelector("#reset")
-const calculateWinner = (choiceCPU, choiceUser)=>{
-    // console.log(choiceCPU, choiceUser)
-    
-   
-        if (choiceCPU === choiceUser) {
-            draw++
-            result = "draw"
-             
-        }
-        // Rock vs Paper = Paper Wins
-        if( choiceCPU == 'rock' && choiceUser == 'paper'){
-            userWin++
-            result = "User Wins"
-             
-        }
-        if (choiceCPU === "paper" && choiceUser === "rock"){
-            cpuWins++
-            result = "Cpu wins"
-             
-        }
-    
-        // Rock vs Scissors == Rock Wins
-        if( choiceCPU == "scissor" && choiceUser == "rock"){
-            userWin++
-            result = "user wins"
-             
-        }
-        if (choiceCPU === "rock" && choiceUser === "scissor"){
-            cpuWins++
-            result = "Cpu wins"
-            
-        }
-        // Paper vs Scissors = Scissors win
-        if( choiceCPU == "paper" && choiceUser == "scissor"){
-            userWin++
-            result = "user wins"
-             
-        }
-        if (choiceCPU === "scissor" && choiceUser === "paper"){
-            cpuWins++
-            result = "Cpu wins"
-             
-        }
-        resultDisplay.innerHTML = result
-        scoreDisplayComputer.textContent = cpuWins;
-        scoreDisplayUser.textContent = userWin;
-    
-    
-   
+const CHOICES = ["rock", "paper", "scissor"];
+const restartButton = document.querySelector("#reset")
+const makeComputerChoice = ()=>{
+    return CHOICES[Math.floor(Math.random()*3)]
 }
 
+let result = '';
+let userWins = 0;
+let cpuWins = 0;
 
-resetButton.addEventListener("click", ()=>{
-    userWin = 0;
-    cpuWins = 0;
-    scoreDisplayComputer.textContent = cpuWins;
-    scoreDisplayUser.textContent = userWin;
-    result = '';
-    userChoice = '';
-    computerChoice = '';
-    userChoiceDisplay.innerHTML = userChoice;
-    computerChoiceDisplay.innerHTML = computerChoice;
-    resultDisplay.innerHTML = result;
+// Getting User and Computer Choices
+const userChoices = document.querySelectorAll(".choice")
+userChoices.forEach((choice)=>{
+    
+   choice.addEventListener("click", (e)=>{
+    if(userWins<5 && cpuWins<5){
+        const displayPlayerChoice = document.getElementById("playerChoice")
+        const displayComputerChoice = document.getElementById("computerChoice")
+        const computerChoice = makeComputerChoice();
+        const userChoice = e.target.id;
+        result =  calculateWinner(computerChoice, userChoice);
+       const displayScore = document.querySelector('#score')
+       displayScore.textContent = `Player: ${userWins} - ${cpuWins} Computer`;
+       displayComputerChoice.textContent = computerChoice;
+       displayPlayerChoice.textContent = userChoice;
+    }else{
+        const resultDisplay = document.querySelector("#results")
+        if(userWins>cpuWins){
+            resultDisplay.textContent = `Winner is User because they reached 5 wins first.`
+        }else{
+            resultDisplay.textContent = `Winner is Computer because they reached 5 wins first.`
+        }
+    }
+   
+   })
 
+   
 })
 
-buttons.forEach(possibleChoice => possibleChoice.addEventListener('click', (e)=>{
-    userChoice = e.target.id;
-    userChoiceDisplay.innerHTML = userChoice;
-    computerChoice = computerChoices[Math.floor(Math.random()*3)];
-    computerChoiceDisplay.innerHTML = computerChoice;
-    if(cpuWins <5 && userWin<5){
-        calculateWinner(computerChoice, userChoice);
-        console.log("From IF")
-    }else{
-        if(cpuWins>userWin){
-            result = `Game over, the winner is CPU`
-            resultDisplay.textContent = result;
-            console.log("From Else")
-        }else{
-            result = `Game over, the winner is User`;
-            resultDisplay.textContent = result;
-        }
-        
+
+// Game Logic
+
+const calculateWinner = (cpu, user)=>{
+    if(cpu===user){
+        return  'draw'
     }
-    
-   
-    console.log(userWin, cpuWins)
+    if(cpu === 'rock' && user ==='paper'){
+        userWins +=1;
+        return  'user wins'
+    }
+    if(cpu === 'rock' && user ==='scissor'){
+        cpuWins +=1;
+        return  'cpu wins'
+    }
+    if(cpu === 'paper' && user ==='rock'){
+        cpuWins +=1;
+        return  'cpu wins'
+    }
+    if(cpu === 'paper' && user ==='scissor'){
+        userWins +=1;
+        return  'user wins'
+    } 
+    if(cpu === 'scissor' && user ==='paper'){
+        userWins +=1;
+        return  'user wins'
+    }
+    if(cpu === 'scissor' && user ==='paper'){
+        cpuWins +=1;
+        return  'cpu wins'
+    }
 
-}))
-// Function to make selection of Rock Paper and Scissors for Computer using random number generator
+  
+}
+//restart button
 
-
-
-
-
-// Calculating the winner to display it in the end
-
-
-
-
-
+restartButton.addEventListener("click", ()=>{
+    result = '';
+    userWins = 0;
+    cpuWins = 0;
+    const resultDisplay = document.querySelector("#results")
+    resultDisplay.textContent = ''
+    const displayScore = document.querySelector('#score')
+    displayScore.textContent = ''
+})

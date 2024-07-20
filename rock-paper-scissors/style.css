@@ -1,0 +1,49 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+    width: 100vw;
+    background-color: rgb(95, 72, 64);
+}
+.choices{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    
+    border: 1px solid black;
+}
+.choice{
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    height: 4rem;
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(79, 103, 31);
+    transition: background 0.2 ease;
+   
+}
+
+.choice:hover{
+    cursor: pointer;
+    background-color: rgb(114, 127, 89);
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid black;
+ 
+  
+    
+}
+#reset{
+    padding: 0.7rem;
+    width: 4rem;
+    height: 3rem;
+    background-color: darkcyan;
+}
