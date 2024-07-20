@@ -52,18 +52,21 @@ table {
 
 
 #container{
-    height: 65vh;
-    width: 65vw;
+    height: 80vh;
+    width: 80vw;
     background-color: rgb(139, 123, 59);
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;flex-direction: column;
+	flex-direction: column;
+   
 }
 .squares{
-    height: 15vh;
-    width: 15vw;
+   
     background-color: bisque;
     border: 1px solid black;
+	width:8rem;
+	height: 8rem;
+	flex-wrap: wrap;
+	
 }
 
 .squares:nth-child(odd){
