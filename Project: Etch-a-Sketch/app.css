@@ -55,14 +55,18 @@ table {
 
     display: flex;
 	flex-wrap: wrap;
-   
+	height: 800px;
+   width: 800px;
+   justify-content: center;
+   background-color: aquamarine;
 }
 .squares{
    
     background-color: bisque;
-    height: 8vh;
-	width: 8vh;
+	height: 5vh;
+	width: 5vw;
 	border: 1px solid yellow;
+	flex-shrink: 1;
 }
 
 .squares:nth-child(odd){

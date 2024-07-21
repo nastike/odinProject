@@ -7,7 +7,7 @@ container.setAttribute("id", "container")
 
 if(number <100){
     for (let i = 0; i < number*number; i++) {
-    
+        
         arrayOfBoxes.push(document.createElement("div"))
     
     }
