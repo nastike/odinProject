@@ -7,9 +7,9 @@ container.setAttribute("id", "container")
 
 if(number <100){
     for (let i = 0; i < number*number; i++) {
+        const individualSquares = document.createElement("div");
+        arrayOfBoxes.push(individualSquares)
         
-        arrayOfBoxes.push(document.createElement("div"))
-    
     }
 }else{
     number = parseInt(prompt("The limit of the size is 100, please try again "))
@@ -18,7 +18,9 @@ if(number <100){
 
 
 arrayOfBoxes.forEach((element)=>{
-    element.classList.add("squares")
-    container.appendChild(element)
+    element.classList.add("squares");
+    element.style.height = `${800/number}px`;
+    element.style.width = `${800/number}px`;
+    container.appendChild(element);
 })
 
