@@ -17,6 +17,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 body {
 	line-height: 1;
+	display: flex;
+	justify-content: center;
 }
 ol, ul {
 	list-style: none;
@@ -52,7 +54,7 @@ table {
 
 
 #container{
-
+	margin-top: 100px;
     display: flex;
 	flex-flow:row-reverse wrap;
 	height: 800px;
@@ -68,20 +70,7 @@ table {
 	flex: 0 0 0.1;
 }
 
-.squares:nth-child(odd){
-    background-color: blue;
-	transition: background 0.5s ease;
-}
-
-.squares:nth-child(odd):hover{
-    background-color: rgb(161, 81, 41);
+.squares:hover{
 	cursor: pointer;
-}
-.squares:nth-child(even){
-    background-color: rgb(154, 93, 143);
-	cursor: pointer;
-}
-.squares:nth-child(even):hover{
-    background-color: rgb(128, 121, 206);
-	cursor: pointer;
+	
 }
