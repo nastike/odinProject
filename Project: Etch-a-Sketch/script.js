@@ -1,28 +1,24 @@
 const container = document.querySelector("#container")
-const body = document.querySelector("body")
-const button = document.createElement("button")
 
-const square = document.createElement("div")
+let number = parseInt(prompt("What is the size of your grid? (for 100*100) Enter 100  "))
 
-const arrayOfColumns = [];
-const arrayOfSquares = [];
+const arrayOfBoxes = []
+container.setAttribute("id", "container")
 
-for (let i = 0; i < 4; i++) {
-    arrayOfColumns.push(document.createElement("div"))
+if(number <100){
+    for (let i = 0; i < number*number; i++) {
+    
+        arrayOfBoxes.push(document.createElement("div"))
+    
+    }
+}else{
+    number = parseInt(prompt("The limit of the size is 100, please try again "))
 }
 
-arrayOfColumns.forEach((column)=>{
-    for (let i = 0; i < 4; i++) {
-        arrayOfSquares.push(document.createElement("div"))
 
-    }
+
+arrayOfBoxes.forEach((element)=>{
+    element.classList.add("squares")
+    container.appendChild(element)
 })
-arrayOfColumns.forEach(column => {
-    container.appendChild(column)
-    column.classList.add("column")
-})
-
-
-// body.appendChild(button)
-
 
