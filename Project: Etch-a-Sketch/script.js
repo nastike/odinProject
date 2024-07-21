@@ -14,13 +14,23 @@ if(number <100){
 }else{
     number = parseInt(prompt("The limit of the size is 100, please try again "))
 }
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
+function getRandomRGBColor() {
+    let r = getRandomInt(0, 255);
+    let g = getRandomInt(0, 255);
+    let b = getRandomInt(0, 255);
+    return `rgb(${r}, ${g}, ${b})`;
+}
 
 
 arrayOfBoxes.forEach((element)=>{
     element.classList.add("squares");
-    element.style.height = `${800/number}px`;
-    element.style.width = `${800/number}px`;
+    element.style.height = `${(800/number)}px`;
+    element.style.width = `${(800/number)}px`;
+    element.style.background = getRandomRGBColor();
     container.appendChild(element);
 })
 
