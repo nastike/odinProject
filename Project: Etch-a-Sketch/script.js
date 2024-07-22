@@ -31,6 +31,9 @@ arrayOfBoxes.forEach((element)=>{
     element.style.height = `${(800/number)}px`;
     element.style.width = `${(800/number)}px`;
     element.style.background = getRandomRGBColor();
+    element.addEventListener("mouseover", (e)=>{
+       e.target.style.background = 'black'
+    })
     container.appendChild(element);
 })
 
