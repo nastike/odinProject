@@ -19,6 +19,8 @@ body {
 	line-height: 1;
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+	
 	background-color: rgb(81, 62, 56);
 }
 ol, ul {
@@ -62,6 +64,7 @@ table {
    	width: 800px;
    justify-content: center;
    background-color: aquamarine;
+   align-self: center;
 }
 .squares{
    flex: 0 0 0.1;
@@ -73,4 +76,10 @@ table {
 }
 .black{
 	background-color: black;
+}
+button{
+	height: 50px;
+	width: 100px;
+	align-self: center;
+	background-color: rgb(171, 151, 119);
 }
