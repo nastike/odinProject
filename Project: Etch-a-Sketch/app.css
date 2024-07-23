@@ -83,3 +83,10 @@ button{
 	align-self: center;
 	background-color: rgb(171, 151, 119);
 }
+h1{
+	background-color: aquamarine;
+	text-align: center;
+	margin: 20px;
+	height: 50px;
+	font-weight: bold;
+}

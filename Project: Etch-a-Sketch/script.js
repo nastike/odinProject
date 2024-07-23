@@ -39,7 +39,7 @@ function getRandomRGBAColor() {
 
 
 arrayOfBoxes.forEach((element)=>{
-    let a = 0.1;
+    let a = 0.5;
     element.classList.add("squares");
     element.style.height = `${(800/number)}px`;
     element.style.width = `${(800/number)}px`;
@@ -48,7 +48,7 @@ arrayOfBoxes.forEach((element)=>{
        
         
         a+=.1;
-        e.target.style.background = `rgba(0, 0, 0, ${a})`
+        e.target.style.background = `rgba(0,0, 0, ${a})`
     })
     container.appendChild(element);
 })
