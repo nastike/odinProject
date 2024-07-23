@@ -1,5 +1,5 @@
 const container = document.querySelector("#container")
-let a = 0;
+
 let number = parseInt(prompt("What is the size of your grid? (for 100*100) Enter 100  "))
 
 const arrayOfBoxes = []
@@ -18,24 +18,26 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 //rgba(2, 154, 1, 0.6)
-function getRandomRGBColor() {
+function getRandomRGBAColor() {
     let r = getRandomInt(0, 255);
     let g = getRandomInt(0, 255);
     let b = getRandomInt(0, 255);
-    
-    return `rgb(${r}, ${g}, ${b})`;
+    let alpha = Math.random();
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
 
+
 arrayOfBoxes.forEach((element)=>{
+    let a = 0.5;
     element.classList.add("squares");
     element.style.height = `${(800/number)}px`;
     element.style.width = `${(800/number)}px`;
-    element.style.background = getRandomRGBColor();
+    element.style.background = getRandomRGBAColor();
     element.addEventListener("mouseover", (e)=>{
        
         
-        a+=.11;
+        a+=.1;
         e.target.style.background = `rgba(0, 0, 0, ${a})`
     })
     container.appendChild(element);
