@@ -21,11 +21,17 @@
     
 }
 #display{
-    
+   
     height: calc(800px/6);
     width: 100%;
     background-color: cadetblue;
     border: 2px solid black;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    align-items: end;
+    font-size: 50px
+
 }
 .numbers{
    background-color: darkgreen;
@@ -48,6 +54,10 @@
     font-size: 25px;
     border: 1px solid black;
     
+}
+.number:hover{
+    cursor: pointer;
+
 }
 .operator{
     background-color: #2f3a4a;
