@@ -5,8 +5,33 @@ let displayText = '';
 
 bts.forEach((element)=>{
     element.addEventListener("click", (e)=>{
-        displayText = e.target.value;
-        display.textContent += displayText;
+        if(display.textContent.length > 7){
+            displayText = displayText;
+            
+            
+        }else{
+            
+            displayText = e.target.value;
+            display.textContent += displayText;
+            
+            
+        }
+       
     })
 })
+const add = ()=>{
+
+}
+
+const substract = ()=>{
     
+}
+const multiply = ()=>{
+    
+}
+const divide = ()=>{
+    
+}
+const operate = ()=>{
+    
+}
