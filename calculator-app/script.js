@@ -1,13 +1,16 @@
 const bts = document.querySelectorAll(".number")
 const display = document.querySelector("#display")
 let displayText = ''; 
-
+let operationFirstValue = '';
+let operationSecondValue ='';
+let result;
 
 bts.forEach((element)=>{
     element.addEventListener("click", (e)=>{
         if(e.target.value === "1" || e.target.value === "2" ||e.target.value === "3" || e.target.value === "4"||
             e.target.value === "5" || e.target.value === "6" ||e.target.value === "7" || e.target.value === "8"||
-            e.target.value === "9" || e.target.value === "0" ){
+            e.target.value === "9" || e.target.value === "0" || e.target.value ==="."){
+              
                 if(display.textContent.length > 7){
                     displayText = displayText;
                     
@@ -22,6 +25,13 @@ bts.forEach((element)=>{
             }
       
         if(e.target.value === "+" || e.target.value === "-" ||e.target.value === "*" || e.target.value === "/"){
+                operationFirstValue = display.textContent;
+                result = Number(operationFirstValue)
+                if(e.target.value === "+"){
+                    
+                    
+
+                }
                 
 
 
