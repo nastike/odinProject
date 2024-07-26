@@ -7,11 +7,14 @@ let result;
 
 bts.forEach((element)=>{
     element.addEventListener("click", (e)=>{
-        if(e.target.value === "1" || e.target.value === "2" ||e.target.value === "3" || e.target.value === "4"||
-            e.target.value === "5" || e.target.value === "6" ||e.target.value === "7" || e.target.value === "8"||
-            e.target.value === "9" || e.target.value === "0" || e.target.value ==="."){
+       
+        if(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."].includes(e.target.value)){
+
+                if(display.textContent.includes(".")){
+                    displayText = displayText;
+                }
               
-                if(display.textContent.length > 7){
+                if(display.textContent.length > 8){
                     displayText = displayText;
                     
                     
@@ -23,15 +26,10 @@ bts.forEach((element)=>{
                     
                 }
             }
-      
-        if(e.target.value === "+" || e.target.value === "-" ||e.target.value === "*" || e.target.value === "/"){
+        
+        if(["+", "-", "*", "/", "%"].includes(e.target.value)){
                 operationFirstValue = display.textContent;
-                result = Number(operationFirstValue)
-                if(e.target.value === "+"){
-                    
-                    
-
-                }
+                operate(e.target.value, operationFirstValue);
                 
 
 
@@ -50,20 +48,47 @@ bts.forEach((element)=>{
        
     })
 })
-const add = ()=>{
-
+const add = (a, b)=>{
+    return a+b;
 }
 
-const substract = ()=>{
-    
+const substract = (a, b)=>{
+    return a-b;
 }
-const multiply = ()=>{
-    
+const multiply = (a, b)=>{
+    return a*b;
 }
-const divide = ()=>{
-    
+const divide = (a, b)=>{
+    return a/b;
 }
-const operate = ()=>{
-    
+const percentage = (num)=>{
+    console.log(num/100)
+    return (num/100);
+
+}
+const operate = (str, firstValue, secondValue)=>{
+    switch(str){
+        case "+": 
+            console.log("from +")
+            add()
+            break;
+        case "-":
+            substract()
+            console.log("from -")
+            break;
+        case "*":
+            multiply()
+            console.log("from *")
+            break;
+        case "/":
+            divide()
+            console.log("from /")
+            break;
+        case "%":
+            console.log("from Percentage")
+            displayText = percentage(+firstValue)
+            display.textContent = displayText;
+            break;
+    }
 }
 
