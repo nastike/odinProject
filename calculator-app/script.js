@@ -10,10 +10,7 @@ bts.forEach((element)=>{
        
         if(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."].includes(e.target.value)){
 
-                if(display.textContent.includes(".")){
-                    displayText = displayText;
-                }
-              
+                
                 if(display.textContent.length > 8){
                     displayText = displayText;
                     
@@ -29,7 +26,9 @@ bts.forEach((element)=>{
         
         if(["+", "-", "*", "/", "%"].includes(e.target.value)){
                 operationFirstValue = display.textContent;
-                operate(e.target.value, operationFirstValue);
+                
+                result = operate(e.target.value, operationFirstValue);
+
                 
 
 
@@ -70,24 +69,29 @@ const operate = (str, firstValue, secondValue)=>{
     switch(str){
         case "+": 
             console.log("from +")
-            add()
+            console.log(secondValue)
+            result = add(firstValue, secondValue)
+            display.textContent = result;
             break;
         case "-":
-            substract()
+            result = substract(firstValue, secondValue)
+            display.textContent = result;
             console.log("from -")
             break;
         case "*":
-            multiply()
+           result  = multiply(firstValue, secondValue)
+           display.textContent = result;
             console.log("from *")
             break;
         case "/":
-            divide()
+            result = divide(firstValue, secondValue)
+            display.textContent = result;
             console.log("from /")
             break;
         case "%":
             console.log("from Percentage")
-            displayText = percentage(+firstValue)
-            display.textContent = displayText;
+            result = percentage(+firstValue)
+            display.textContent = result;
             break;
     }
 }
