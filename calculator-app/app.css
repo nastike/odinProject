@@ -45,7 +45,7 @@
 
    
 }
-.number{
+.number, .operator, .equalsTo, .acBtn, .delBtn{
     background-color: #874b46;
     /* height: calc(800px/ ); */
     width: calc(500px/4);
