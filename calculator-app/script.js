@@ -3,12 +3,14 @@ const display = document.querySelector("#display")
 let displayText = ''; 
 let operationFirstValue = '';
 let operationSecondValue ='';
+let currentOperator = ''
 let result;
+let isOperatorClicked = false;
 
 bts.forEach((element)=>{
     element.addEventListener("click", (e)=>{
-       
-        if(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."].includes(e.target.value)){
+       const value = e.target.value
+        if(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(value)){
 
                 
                 if(display.textContent.length > 8){
@@ -16,33 +18,71 @@ bts.forEach((element)=>{
                     
                     
                 }else{
+                    if(isOperatorClicked){
+                        display.textContent = '';
+                        isOperatorClicked = false
+                    }
                     
-                    displayText = e.target.value;
+                    displayText = value;
                     display.textContent += displayText;
                     
                     
                 }
             }
-        
-        if(["+", "-", "*", "/", "%"].includes(e.target.value)){
-                operationFirstValue = display.textContent;
+            if (value === ".") {
                 
-                result = operate(e.target.value, operationFirstValue);
+                if (!display.textContent.includes(".")) {
+                    if (display.textContent === '' || isOperatorClicked) {
+                        display.textContent = '0.'; 
+                    } else {
+                        display.textContent += value; 
+                    }
+                    isOperatorClicked = false; 
+                }
+            }
+        if(["+", "-", "*", "/", "%"].includes(value)){
+            if(operationFirstValue === ''){
+                operationFirstValue = display.textContent;
+            } else if(operationSecondValue ===''){
+                operationSecondValue = display.textContent;
+                result = operate(value, +operationFirstValue, +operationSecondValue);
+                display.textContent = result;
+                operationFirstValue = result;
+                operationSecondValue = '';
+            }
+            currentOperator = value;
+            isOperatorClicked = true;
+                
+                
+                
 
                 
 
 
         }
-        if(e.target.value ==="DEL"){
+        if(value ==='eql'){
+            if(operationFirstValue !== '' && currentOperator !==''){
+                operationSecondValue = display.textContent;
+                result = operate(currentOperator, +operationFirstValue, +operationSecondValue)
+                display.textContent = result
+                operationFirstValue = ''
+                operationSecondValue = ''
+                currentOperator = ''
+            }
+        }
+        if(value ==="DEL"){
             const someArr = display.textContent.split("")
             someArr.pop()
             displayText = someArr.join('')
             display.textContent = displayText;
             
         }
-        if(e.target.value ==="AC"){
+        if(value ==="AC"){
             displayText = ''
             display.textContent = displayText;
+            operationFirstValue =''
+            operationSecondValue = ''
+            currentOperator = ''
         }
        
     })
@@ -68,31 +108,29 @@ const percentage = (num)=>{
 const operate = (str, firstValue, secondValue)=>{
     switch(str){
         case "+": 
-            console.log("from +")
-            console.log(secondValue)
-            result = add(firstValue, secondValue)
-            display.textContent = result;
-            break;
+          return add(firstValue, secondValue)
+            
         case "-":
-            result = substract(firstValue, secondValue)
-            display.textContent = result;
+            return(substract(firstValue, secondValue))
             console.log("from -")
-            break;
+            
         case "*":
-           result  = multiply(firstValue, secondValue)
-           display.textContent = result;
+           
             console.log("from *")
-            break;
+            return(multiply(firstValue, secondValue))
+            
         case "/":
-            result = divide(firstValue, secondValue)
-            display.textContent = result;
+           
             console.log("from /")
-            break;
+            return(divide(firstValue, secondValue))
+            
+            
         case "%":
             console.log("from Percentage")
-            result = percentage(+firstValue)
-            display.textContent = result;
-            break;
+            
+            return(percentage(firstValue))
+        default:
+            return 0    
     }
 }
 
