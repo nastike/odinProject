@@ -11,57 +11,45 @@
         <div id="logo">
             <div class="logo-odin">
                 <img src="https://cdn.statically.io/gh/TheOdinProject/curriculum/5f37d43908ef92499e95a9b90fc3cc291a95014c/html_css/project-sign-up-form/odin-lined.png" alt="">
-            <span class="name-odin">ODIN</span>
+                <span class="name-odin">ODIN</span>
+            </div>
+            <span class="credits">Photo by Halie West on Unsplash</span>
         </div>
-        
-        <span class="credits">Photo by Halie West on Unsplash</span>
-    </div>
         <div id="form-container">
-            <div class="form-discription">
+            <div class="form-description">
                 <p>This is not a real online service! You know you need something like this in your life to help you realize your deepest dreams. 
                     Sign up now to get started. 
-
                 </p>
                 <h3>You know you want to.</h3>
             </div>
             <div class="form-body">
                 <form action="">
-                    <legend>Let's do this!</legend>
-                    <div class="name">
                     <fieldset>
-                    <label for="">First Name</label>
-                   <input type="text">
-                   <label for="">Last Name</label>
-                   <input type="text">
-
-                </fieldset>
-            </div>
-                <div class="contact-information">
-                    
-                        <label for="">Email</label>
-                        <input type="text">
-                        <label for="">Phone Number</label>
-                        <input type="number">
-                       
-                </div>
-                  
-                   <div class="passwords">
-                    <label for="">Password</label>
-                    <input type="password">
-                    <label for="">Confirm Password</label>
-                    <input type="password">
-                   </div>
-                   
-                   <div class="buttons">
-                    <Button>Create Account</Button>
-                    <div class="login-div">
-                     <h3>Already have an account? <a href="">Log in</a></h3>
-                   </div>
-                 
-                   </div>
-                   
-
+                        <legend>Let's do this!</legend>
+                        <div class="name">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name">
+                        </div>
+                        <div class="contact-information">
+                            <label for="email">Email</label>
+                            <input type="email" id="email">
+                            <label for="phone-number">Phone Number</label>
+                            <input type="tel" id="phone-number">
+                        </div>
+                        <div class="passwords">
+                            <label for="password">Password</label>
+                            <input type="password" id="password">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password">
+                        </div>
+                        <button type="submit">Create Account</button>
+                    </fieldset>
                 </form>
+                <div class="login-div">
+                    <h3>Already have an account? <a href="">Log in</a></h3>
+                </div>
             </div>
         </div>
     </div>
