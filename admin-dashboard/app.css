@@ -1,4 +1,133 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+.circle{
+    background-color: forestgreen;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+}
+.grid-container{
+    display: grid;
+    
+    height: 100vh;
+    
+    grid-template-areas: 
+                    "dashboard  header header header header"
+                    
+                    "dashboard  main main main main "
+                    "dashboard  main main main main "
+                    "dashboard  main main main main "
+                    "dashboard  main main main main ";
+    width: 100vw;
+    
+}
+
+.dashboard{
+    display: grid;
+    grid-area: header;
+    position: fixed;
+    height: 100%;
+    width: 1fr;
+    grid-area: dashboard;
+    width: 25vw;
+
+    background-color: #3b82f6;
+    box-shadow: 2px 2px #93c5fd;
+    gap: 3px;
+    color: white;
+}
+
+img{
+    margin-right: 15px;
+    position: relative;
+    top: 5px;
+    color: white;
+}
+.dashboard-logo{
+    display: flex;
+    justify-content: center;
+
+}
+.dashboard-logo img{
+    position: relative;
+    top: 15px;
+    left: -15px;
+    color: white;
+}
+.dashboard-logo span{
+    position: relative;
+    top: 25px;
+    
+}
+.dashboard-menu ul{
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 100%;
+}
+.dashboard-menu ul li{
+    height: 30px;
+    width: 200px;
+    margin: 5px 0 0 10px;
+    list-style: none;
+}
+.dashboard-settings ul li{
+    height: 30px;
+    width: 200px;
+    margin: 5px 0 0 10px;
+    list-style: none;
+}
+.dashboard-settings ul{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.header{
+    
+   width: 75vw;
+   justify-self: end;
+   background-color: whitesmoke;
+   grid-area: header;
+   border: 1px solid blue;
+   box-shadow: 2px 2px 2px 2px whitesmoke;
+   
+}
+.search{
+    display: flex;
+    justify-content: space-between;
+}
+.search input{
+    width: 60%;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(210, 206, 206);
+    margin-top: 5px;
+    padding: 7px;
+    height: 20px;
+}
+.main{
+    
+    display: grid;
+    justify-self: end;
+    width: 75vw;
+    grid-template-columns: 2fr 1fr;
+    
+    background-color: teal;
+    grid-area: main;
+}
+.projects{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+   
+    margin: 10px 15px 15px 10px;
+    grid-row: auto;
+    border: 1px solid black;
+}
+
+.annoucements{
+    margin: 10px 15px 15px 0;
+    grid-row: auto;
+    padding-right: 10px;
+    border: 1px solid rebeccapurple;
 }
