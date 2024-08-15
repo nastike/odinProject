@@ -2,7 +2,7 @@ const myLibrary = [];
 const containerDiv = document.getElementById("container");
 const tableElement = document.createElement("table")
 const buttonElement = document.createElement("button")
-
+const dialogForm = document.getElementById("dialogForm")
 buttonElement.innerText = "New Book"
 
 
@@ -18,14 +18,9 @@ function addBookToLibrary(obj){
     myLibrary.push(book1);
 }
 
-addBookToLibrary({author:"Hari Bangsha", title: "Firfire", numberOfPages:400, hasRead: true})
-addBookToLibrary({author:"Krishna Bangsha", title: "Jhirjhire", numberOfPages:100, hasRead: true})
-addBookToLibrary({author:"Ram Bangsha", title: "Chakrabiyu", numberOfPages:500, hasRead: false})
-addBookToLibrary({author:"Shiva Bangsha", title: "Maltabara", numberOfPages:200, hasRead: true})
 
 
-
-myLibrary.forEach((book) => {
+const addBook = (book)=>{
     const tbody = document.createElement("tbody");
     
     for (key in book) {
@@ -57,7 +52,7 @@ myLibrary.forEach((book) => {
 
     // Append the table to the container div
     containerDiv.appendChild(tableElement);
-});
+}
 
 tableElement.classList.add('tableDesign')
 const dialogElement = document.getElementById("addBook")
@@ -82,7 +77,7 @@ confirmBtn.addEventListener("click", ()=>{
     const hasRead = document.getElementById("hasRead")
     addedBook.author = author.value;
     addedBook.title = title.value;
-    addedBook.noOfPage = noOfPage.value;
+    addedBook.numberOfPages = noOfPage.value;
     if(hasRead.value === "Yes"){
             addedBook.hasRead = true;
 
@@ -90,6 +85,11 @@ confirmBtn.addEventListener("click", ()=>{
     if(hasRead.value ==="No"){
         addedBook.hasRead = false
     }
-    
+    console.log(noOfPage.value)
     addBookToLibrary(addedBook)
+    myLibrary.forEach((book) => {
+        addBook(book)
+    });
+    dialogForm.reset()
 })
+
