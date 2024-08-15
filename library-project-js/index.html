@@ -7,7 +7,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div id="container">
+       <dialog id="addBook">
+            <p>
+                <form method="dialog">
+                    <label for="author">
+                        Name of the Author: 
+                        <input type="text" id="author" name="author">
+                    </label>
+                    <label for="title">
+                        Title of the Book: 
+                        <input type="text" id="title" name="title">
+                    </label>
+                    <label for="hasRead">
+                        Have you read the book?
+                        <select name="hasRead" id="hasRead">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="noOfPages">
+                        No of pages in the book? 
+                        <input type="number" id="noOfPages" name="noOfPages">
+                    </label>
+
+                    <p>
+                        <button id="confirm">Confirm</button>
+                        <button id="cancel">Cancel</button>
+                    </p>
+                   
+                </form>
+
+            </p>
+          
+
+       </dialog> 
+    </div>
 
     <script src="script.js"></script>
 </body>
