@@ -69,27 +69,28 @@ closeBtn.addEventListener("click", ()=>{
     dialogElement.close();
 })
 
-confirmBtn.addEventListener("click", ()=>{
+confirmBtn.addEventListener("click", () => {
     const addedBook = {}
     const author = document.getElementById("author")
     const title = document.getElementById("title")
     const noOfPage = document.getElementById("noOfPages")
     const hasRead = document.getElementById("hasRead")
+    
     addedBook.author = author.value;
     addedBook.title = title.value;
     addedBook.numberOfPages = noOfPage.value;
-    if(hasRead.value === "Yes"){
-            addedBook.hasRead = true;
+    addedBook.hasRead = hasRead.value === "Yes";
+    
+    addBookToLibrary(addedBook);
 
-    }
-    if(hasRead.value ==="No"){
-        addedBook.hasRead = false
-    }
-    console.log(noOfPage.value)
-    addBookToLibrary(addedBook)
+    // Clear the table before re-rendering
+    tableElement.innerHTML = "";
+
+    // Re-render the table with the updated library
     myLibrary.forEach((book) => {
-        addBook(book)
+        addBook(book);
     });
-    dialogForm.reset()
-})
 
+    dialogForm.reset();
+    dialogElement.close();
+});
